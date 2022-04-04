@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const { promisify } = require('util');
 
 var sqlConnecion = mysql.createConnection({
-    host:"localhost",
+    host:"database-1.cnhohd2in98p.us-east-1.rds.amazonaws.com",
     user:"admin",
         password:"maruchan123",
     database:"sys" 
