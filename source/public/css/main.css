@@ -1,0 +1,58 @@
+#seccion{
+    width: 1200px;
+    height: 1000px;
+    background-color: antiquewhite;
+    max-width: 0 auto;
+
+}
+img{
+    display: block;
+    border: 1px solid #ddd;
+    margin-left: auto;
+    margin-right: 4px;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+.table th{
+    padding: 50 100 20 0;
+}
+
+.table thead th{
+    border-bottom: 2px solid gray;
+}
+
+.table td, .table th{
+    padding: .75rem;
+    border: 2px solid gray;
+}
+
+table th{
+    border: 2px solid gray;
+}
+
+table {
+    border: 2px solid gray;
+    border-collapse: collapse;
+}
+
+body{
+    background-image: url(../img/mar.jpg);
+    background-position-x: 50%;
+    background-position-y: 50%;
+}
+div{
+        background-color: white;
+        justify-content: center;
+        margin: auto;
+        max-width: 620px;
+        padding: 63px;
+        border-radius: 4px;
+    }
+    table, th, td{
+        border-collapse: collapse;
+    }
+    button{
+        margin-right: auto;
+    }

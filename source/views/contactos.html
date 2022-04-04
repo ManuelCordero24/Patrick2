@@ -1,0 +1,94 @@
+<html>
+    <%-include('partials/second_head.html');%>
+	<body>
+		<header>
+			<%-include('partials/navegacion.html');%>
+		</header>
+
+		<div class="p-5">
+			<div class="row">
+				<center><h3>Listado de Contactos</h3></center>
+				
+					<table class="table table-bordered">
+						<thead class="text-center">
+							<tr>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Domicilio</th>
+								<th>Telefono</th>
+							</tr>
+						</thead>
+						<% if (contactos) { %>
+							<tbody>
+								<% for(var i=0; i < contactos.length; i++ ) { %>
+								<tr>
+									<td><%= contactos[i].id %></td>
+									<td><%= contactos[i].nombre %></td>
+									<td><%= contactos[i].domicilio %></td>
+									<td><%= contactos[i].telefono %> </td>
+								</tr>
+								<% } %>
+							</tbody>
+						<% } %>
+
+					</table>
+						<form action="/contactos" method="post">
+							<button type="submit" style="float: right;">Ver</button>
+						</form>
+						<form action="/contactos" method="get">
+							<button action="/contactos" style="float: right;">Limpiar</button>
+						</form>
+			</div>
+		</div>
+<div>
+	<div class="row">
+		<center><h3 class="mb-5">Agregar un nuevo contacto</h3> </center>
+			
+			<form action="/contactos/nuevo" method="post">
+						<label for="nombre">Nombre</label>
+						<input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+						<br>
+						<label for="domicilio">Domicilio</label>
+						<input type="text" name="domicilio" id="domicilio" class="form-control" placeholder="Direccion">
+						<br>
+						<label for="telefono">Telefono</label>
+						<input type="text" name="telefono" id="telefono" class="form-control" placeholder="(000)-000-000" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+					<button type="submit" style="float: right;">Guardar</button>
+			</form>
+	</div>
+</div>
+<div>
+	<center><h3 class="mb-5">Buscar o Modificar Contacto</h3></center>	
+		<div class="card">
+				<form action="/contactos/id" method="get" class="form-group col-md-5">
+					<label for="id" class="mb-3" style="font-weight: bold;">Contacto ID:</label>
+					<input type="text" id="id" name="id" placeholder="Contacto ID" class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+					<button type="submit" class="float-right mt-3" style="float: right;">Buscar</button>
+				</form>
+			<% if ( contacto ) { %>
+					<form action="/contactos/id" method="post" class="form-group col-md-8">
+						<input type="hidden" name="id" id="id" value="<%=contacto.id%>">
+						<label for="nombre" class="mb-3" style="font-weight: bold;">Nombre:</label>
+						<input type="text" id="nombre" name="nombre" placeholder="Nombre con Apellido" class="form-control" value="<%=contacto.nombre%>">
+						<label for="domicilio" class="mb-3" style="font-weight: bold;">Domicilio:</label>
+						<input type="text" id="domicilio" name="domicilio" placeholder="Direccion" class="form-control" value="<%=contacto.domicilio%>">
+						<label for="telefono" class="mb-3" style="font-weight: bold;">Telefono:</label>
+						<input type="text" id="telefono" name="telefono" placeholder="Telefono" class="form-control" value="<%=contacto.telefono%>">
+						<button type="submit" class="mt-3"style="float: right;">Guardar</button>
+					</form>
+					<form action="/contactos/id/borrar" method="post">
+						<input type="hidden" name="id" id="id" value="<%=contacto.id%>">
+						<button type="submit" class="mt-3"style="float: right;">Eliminar</button>
+					</form>
+			<% } %>
+		</div>
+</div>
+	</body>
+</html>
+
+
+<style>
+	.float-right {
+		float: right;
+	}
+</style>
